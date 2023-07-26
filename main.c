@@ -1,4 +1,5 @@
 #include "monty.h"
+#include <stdio.h>
 
 /**
 * main - monty code interpreter
@@ -39,7 +40,7 @@ execute(content, &stack, counter, file);
 }
 free(content);
 }
-free_stack(stack);
+ssa_free_stack(stack);
 fclose(file);
 return (0);
 }
