@@ -1,5 +1,7 @@
 #ifndef MONTY_H
 #define MONTY_H
+#define _GNU_SOURCE
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/types.h>
@@ -22,6 +24,23 @@ int n;
 struct stack_s *prev;
 struct stack_s *next;
 } stack_t;
+
+/**
+ * struct global_s - variables -> args, file, line content
+ * @arg: value
+ * @line: input line content
+ * @file: pointer to monty file
+ *
+ * Description: variables that carries values through the program
+ */
+typedef struct global_s
+{
+	char *arg;
+	FILE *file;
+	char *line;
+} glob_t;
+
+extern glob_t glob;
 /**
  * struct bus_s - variables -args, file, line content
  * @arg: value
@@ -38,6 +57,7 @@ char *content;
 int lifi;
 }  bus_t;
 extern bus_t bus;
+
 /**
  * struct instruction_s - opcode and its function
  * @opcode: the opcode
@@ -75,4 +95,5 @@ void ssa_addnode(stack_t **head, int n);
 void ssa_addqueue(stack_t **head, int n);
 void ssa_f_queue(stack_t **head, unsigned int counter);
 void ssa_f_stack(stack_t **head, unsigned int counter);
+void execute_file(stack_t* stack);
 #endif
