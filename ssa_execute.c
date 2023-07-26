@@ -10,21 +10,21 @@
 int execute(char *content, stack_t **stack, unsigned int counter, FILE *file)
 {
 instruction_t opst[] = {
-{"push", f_push}, {"pall", f_pall}, {"pint", f_pint},
-{"pop", f_pop},
-{"swap", f_swap},
-{"add", f_add},
-{"nop", f_nop},
-{"sub", f_sub},
-{"div", f_div},
-{"mul", f_mul},
-{"mod", f_mod},
-{"pchar", f_pchar},
-{"pstr", f_pstr},
-{"rotl", f_rotl},
-{"rotr", f_rotr},
-{"queue", f_queue},
-{"stack", f_stack},
+{"push", ssa_f_push}, {"pall", ssa_f_pall}, {"pint", ssa_f_pint},
+{"pop", ssa_f_pop},
+{"swap", ssa_f_swap},
+{"add", ssa_f_add},
+{"nop", ssa_f_nop},
+{"sub", ssa_f_sub},
+{"div", ssa_f_div},
+{"mul", ssa_f_mul},
+{"mod", ssa_f_mod},
+{"pchar", ssa_f_pchar},
+{"pstr", ssa_f_pstr},
+{"rotl", ssa_f_rotl},
+{"rotr", ssa_f_rotr},
+{"queue", ssa_f_queue},
+{"stack", ssa_f_stack},
 {NULL, NULL}
 };
 unsigned int z = 0;
@@ -46,7 +46,7 @@ if (op && opst[z].opcode == NULL)
 { fprintf(stderr, "L%d: unknown instruction %s\n", counter, op);
 fclose(file);
 free(content);
-free_stack(*stack);
+ssa_free_stack(*stack);
 exit(EXIT_FAILURE); }
 return (1);
 }

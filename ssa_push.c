@@ -21,17 +21,17 @@ if (flag == 1)
 { fprintf(stderr, "L%d: usage: push integer\n", counter);
 fclose(bus.file);
 free(bus.content);
-free_stack(*head);
+ssa_free_stack(*head);
 exit(EXIT_FAILURE); }}
 else
 { fprintf(stderr, "L%d: usage: push integer\n", counter);
 fclose(bus.file);
 free(bus.content);
-free_stack(*head);
+ssa_free_stack(*head);
 exit(EXIT_FAILURE); }
 x = atoi(bus.arg);
 if (bus.lifi == 0)
-addnode(head, x);
+ssa_addnode(head, x);
 else
-addqueue(head, x);
+ssa_addqueue(head, x);
 }
